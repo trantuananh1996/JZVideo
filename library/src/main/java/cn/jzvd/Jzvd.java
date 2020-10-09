@@ -378,14 +378,18 @@ public abstract class Jzvd extends FrameLayout implements View.OnClickListener, 
             startVideo();
         } else if (state == STATE_PLAYING) {
             Log.d(TAG, "pauseVideo [" + this.hashCode() + "] ");
-            mediaInterface.pause();
-            onStatePause();
+            pauseVideo();
         } else if (state == STATE_PAUSE) {
             mediaInterface.start();
             onStatePlaying();
         } else if (state == STATE_AUTO_COMPLETE) {
             startVideo();
         }
+    }
+
+    public void pauseVideo() {
+        mediaInterface.pause();
+        onStatePause();
     }
 
     @Override
